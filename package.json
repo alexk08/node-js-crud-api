@@ -1,0 +1,19 @@
+{
+  "name": "node-js-crud-api",
+  "version": "1.0.0",
+  "description": "RS School task CRUD-API of Node JS Course solution",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexk08/node-js-crud-api.git"
+  },
+  "author": "alexk08",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexk08/node-js-crud-api/issues"
+  },
+  "homepage": "https://github.com/alexk08/node-js-crud-api#readme"
+}
