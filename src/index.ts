@@ -1,6 +1,7 @@
 import http from 'node:http';
 import { config } from 'dotenv';
 import { UsersService } from './services/usersService.js';
+import { ApiError } from './errors/apiError.js';
 
 const usersService = new UsersService();
 
@@ -22,18 +23,18 @@ config();
 
 const server = http.createServer(async (req, res) => {
   try {
-    if (!req.url || !isValidPath(req.url)) throw new Error('Page not found');
+    if (!req.url || !isValidPath(req.url)) throw new ApiError('page_not_found');
 
     switch (req.method) {
       case HttpMethods.GET:
+        res.writeHead(200, { 'Content-Type': 'application/json' });
         if (req.url === BASE_URL) {
-          res.writeHead(200, { 'Content-Type': 'application/json' });
           const users = await usersService.getUsers();
           const json = JSON.stringify({ users });
           res.end(json);
           break;
         }
-        const id = req.url.substring(11);
+        const id = req.url.split(BASE_URL).at(-1);
         const user = await usersService.getUserById(id);
         const json = JSON.stringify({ user });
         res.end(json);
@@ -48,7 +49,9 @@ const server = http.createServer(async (req, res) => {
       default:
     }
   } catch (e) {
-    console.error(e);
+    const { message, statusCode } = e as ApiError;
+    res.writeHead(statusCode, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: { message } }));
   }
 });
 
