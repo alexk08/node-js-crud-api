@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "npm run build:live",
-    "start": "npm run build && node build/index",
+    "start": "npm run build && node build/index.js",
     "build": "rm -rf build && tsc -p .",
     "build:live": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -25,6 +25,7 @@
   "homepage": "https://github.com/alexk08/node-js-crud-api#readme",
   "devDependencies": {
     "@types/node": "^20.11.19",
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
     "eslint": "^8.56.0",
@@ -32,5 +33,9 @@
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.4",
+    "uuid": "^9.0.1"
   }
 }
