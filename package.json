@@ -3,15 +3,14 @@
   "version": "1.0.0",
   "description": "RS School task CRUD-API of Node JS Course solution",
   "main": "src/index.js",
-  "type": "module",
   "scripts": {
-    "dev": "npm run build:live",
+    "dev": "nodemon",
     "start": "npm run build && node build/index.js",
     "build": "rm -rf build && tsc -p .",
-    "build:live": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./src",
-    "lint:fix": "eslint ./src --fix"
+    "lint:fix": "eslint ./src --fix",
+    "ts": "tsc"
   },
   "repository": {
     "type": "git",
@@ -29,7 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
     "eslint": "^8.56.0",
-    "nodemon": "^3.0.3",
+    "nodemon": "^3.1.7",
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"

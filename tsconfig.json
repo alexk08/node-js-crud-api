@@ -110,7 +110,4 @@
   "lib": [
     "ESNext"
   ],
-  "ts-node": {
-    "esm": true
-  }
 }

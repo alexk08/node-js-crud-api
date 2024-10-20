@@ -1,5 +1,7 @@
+import { ErrorType, ErrorWithCode, StatusCode } from './types';
+
 export class ApiError extends Error {
-  statusCode: StatusCode;
+  statusCode: StatusCode | undefined;
 
   constructor(errorType: ErrorType) {
     super();
@@ -13,12 +15,6 @@ export class ApiError extends Error {
     return MAP_ERROR[errorType];
   }
 }
-
-type StatusCode = 400 | 404 | 500;
-
-type ErrorType = 'not_valid_id' | 'user_not_exist' | 'page_not_found' | 'missing_required_field' | 'other_error';
-
-type ErrorWithCode = { message: string; statusCode: StatusCode };
 
 const MAP_ERROR: { [key in ErrorType]: ErrorWithCode } = {
   not_valid_id: { message: 'Not valid id', statusCode: 400 },
