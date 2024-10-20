@@ -1,0 +1,40 @@
+{
+  "name": "node-js-crud-api",
+  "version": "1.0.0",
+  "description": "RS School task CRUD-API of Node JS Course solution",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "start": "npm run build && node build/index.js",
+    "build": "rm -rf build && tsc -p .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
+    "ts": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexk08/node-js-crud-api.git"
+  },
+  "author": "alexk08",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexk08/node-js-crud-api/issues"
+  },
+  "homepage": "https://github.com/alexk08/node-js-crud-api#readme",
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@types/uuid": "^9.0.8",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "eslint": "^8.56.0",
+    "nodemon": "^3.1.7",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.4",
+    "uuid": "^9.0.1"
+  }
+}
