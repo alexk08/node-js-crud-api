@@ -1,8 +1,10 @@
-export type StatusCode = 400 | 404 | 500;
+import { HttpStatusCode } from '../types';
 
-export type ErrorType = 'not_valid_id' | 'user_not_exist' | 'page_not_found' | 'missing_required_field' | 'other_error';
+export type ErrorCode = HttpStatusCode.BAD_REQUEST | HttpStatusCode.NOT_FOUND | HttpStatusCode.INTERNAL_SERVER_ERROR;
+
+export type ErrorType = 'NOT_VALID_ID' | 'USER_NOT_EXIST' | 'PAGE_NOT_FOUND' | 'MISSING_REQUIRED_FIELD' | 'OTHER_ERROR';
 
 export interface ErrorWithCode {
   message: string;
-  statusCode: StatusCode;
+  statusCode: ErrorCode;
 }

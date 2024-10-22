@@ -1,18 +1,11 @@
-import { IncomingMessage, ServerResponse } from 'http';
+import { ServerResponse } from 'http';
 import { ApiError } from './apiError';
+import { BASE_HEADERS } from '../constants';
 
-export const onError = (
-  response: ServerResponse<IncomingMessage> & {
-    req: IncomingMessage;
-  },
-  error: ApiError,
-) => {
-  const err = error.statusCode ? error : new ApiError('other_error');
+export const onError = (response: ServerResponse, error: ApiError) => {
+  const err = error.statusCode ? error : new ApiError('OTHER_ERROR');
   const { message, statusCode } = err;
-
-  if (statusCode) {
-    response.writeHead(statusCode, { 'Content-Type': 'application/json' });
-    response.end(JSON.stringify({ error: { message } }));
-    return;
-  }
+  if (!statusCode) return;
+  response.writeHead(statusCode, BASE_HEADERS);
+  response.end(JSON.stringify({ error: { message } }));
 };
