@@ -5,10 +5,12 @@
   "main": "src/index.js",
   "scripts": {
     "dev": "nodemon",
+    "dev:multi": "nodemon --multi",
     "start": "npm run build && node build/index.js",
     "build": "rm -rf build && tsc -p .",
     "start:prod": "npm start",
     "start:dev": "npm run dev",
+    "start:multi": "npm run build && node build/index.js --multi",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
