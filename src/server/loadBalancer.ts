@@ -4,6 +4,9 @@ import { availableParallelism } from 'node:os';
 import { onError } from '../errors/onError';
 import { router } from '../router';
 import { ApiError } from '../errors/apiError';
+import { config } from 'dotenv';
+
+config();
 
 export const loadBalancer = () => {
   const numCPUs = availableParallelism();

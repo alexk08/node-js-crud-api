@@ -16,7 +16,7 @@ export class ApiError extends Error {
   }
 }
 
-const MAP_ERROR: { [key in ErrorType]: ErrorWithCode } = {
+export const MAP_ERROR: { [key in ErrorType]: ErrorWithCode } = {
   NOT_VALID_ID: { message: 'Not valid id', statusCode: 400 },
   MISSING_REQUIRED_FIELD: { message: 'A required field is missing or the value type does not match', statusCode: 400 },
   USER_NOT_EXIST: { message: 'User does not exist', statusCode: 404 },

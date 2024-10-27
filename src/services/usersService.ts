@@ -4,12 +4,13 @@ import { BaseUser, User } from '../types';
 import { isValidUser } from '../utils';
 import { readFile } from 'fs/promises';
 import { createWriteStream } from 'fs';
+import { resolve } from 'url';
 
 export class UsersService {
   private pathToData: string;
 
   constructor() {
-    this.pathToData = `${__dirname}/data.json`;
+    this.pathToData = resolve(__dirname, '../data.json');
   }
 
   private async readData() {
@@ -82,6 +83,10 @@ export class UsersService {
     if (idx < 0) throw new ApiError('USER_NOT_EXIST');
     users.splice(idx, 1);
     await this.writeData(users);
+  }
+
+  async flushDB() {
+    await this.writeData([]);
   }
 
   private validateId(id: string | undefined) {

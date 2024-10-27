@@ -24,3 +24,7 @@ Use the following commands to install and run the application:
    ```bash
    npm run start:multi
    ```
+6. **Run tests:**
+   ```bash
+   npm run test
+   ```
