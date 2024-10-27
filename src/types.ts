@@ -23,5 +23,3 @@ export enum HttpStatusCode {
   NOT_FOUND = 404,
   INTERNAL_SERVER_ERROR = 500,
 }
-
-export type StatusCode = 400 | 404 | 500;

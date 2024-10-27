@@ -1,11 +1,8 @@
-import { createServer } from 'http';
-import { config } from 'dotenv';
-import { router } from './router';
+import { loadBalancer } from './server/loadBalancer';
+import { singleServer } from './server/singleServer';
 
-config();
+const isMultiMode = process.argv[2] === '--multi';
 
-const server = createServer(router);
+export const server = isMultiMode ? loadBalancer : singleServer;
 
-server.listen(process.env.PORT, () => {
-  console.log(`Server listening on port ${process.env.PORT}`);
-});
+server();

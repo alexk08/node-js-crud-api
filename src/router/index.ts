@@ -10,25 +10,15 @@ export const router = async (req: IncomingMessage, res: ServerResponse) => {
   try {
     const { url, method } = req;
 
-    if (method === HttpMethods.GET && url === BASE_URL) {
-      return await getAllUsers(res);
-    }
+    if (method === HttpMethods.GET && url === BASE_URL) return await getAllUsers(res);
 
-    if (method === HttpMethods.GET && isValidPath(url)) {
-      return await getUserById(req, res);
-    }
+    if (method === HttpMethods.GET && isValidPath(url)) return await getUserById(req, res);
 
-    if (method === HttpMethods.POST && url === BASE_URL) {
-      return await createUser(req, res);
-    }
+    if (method === HttpMethods.POST && url === BASE_URL) return await createUser(req, res);
 
-    if (method === HttpMethods.PUT && isValidPath(url)) {
-      return await updateUser(req, res);
-    }
+    if (method === HttpMethods.PUT && isValidPath(url)) return await updateUser(req, res);
 
-    if (method === HttpMethods.DELETE && isValidPath(url)) {
-      return await deleteUser(req, res);
-    }
+    if (method === HttpMethods.DELETE && isValidPath(url)) return await deleteUser(req, res);
 
     throw new ApiError('PAGE_NOT_FOUND');
   } catch (e) {
